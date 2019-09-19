@@ -1,4 +1,4 @@
-# SGNEA home-assistant
+# SGNEA 1Hour PM2.5 home-assistant
 
 
 Home Assistant Custom Component to get PM2.5 from Singapore National Enviroment Agency (SG NEA)

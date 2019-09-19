@@ -29,3 +29,15 @@ east
 west
 central
 ```
+
+Recomended additional automation
+```
+- alias: 'Hourly Update'
+  initial_state: on
+  trigger:
+    - platform: time_pattern
+      minutes: 1
+  action:
+    - service: homeassistant.update_entity
+      entity_id: sensor.sensor.sg_1hour_pm2_5
+```

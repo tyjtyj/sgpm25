@@ -1,4 +1,3 @@
-
 import logging
 import json
 from datetime import timedelta, datetime
@@ -27,7 +26,7 @@ _LOGGER = logging.getLogger(__name__)
 CONF_AREA = 'area'
 DEFAULT_RESOURCE = 'https://api.data.gov.sg/v1/environment/pm25?date_time=' 
 DEFAULT_NAME = 'SG 1Hour PM2.5'
-SCAN_INTERVAL = timedelta(minutes=5)
+SCAN_INTERVAL = timedelta(minutes=1800)
 PARALLEL_UPDATES = 1
 
 TIMEOUT = 10
@@ -45,7 +44,7 @@ def setup_platform(hass, config, add_entities,
                                discovery_info=None):
 
     """Set up the Web scrape sensor."""
-    _LOGGER.info('SGNEAWEB loaded')
+    _LOGGER.info('SGPM25 loaded')
     name = config.get(CONF_NAME)
     resource = config.get(CONF_RESOURCE)
 
@@ -67,25 +66,19 @@ def setup_platform(hass, config, add_entities,
         raise PlatformNotReady
 
     add_entities([NeaSensorPM25(name, resource, headers, area)], True)       
-																			 
-					  
-
 
 class NeaSensorPM25(Entity):
     """Representation of a web scrape sensor."""
 
     def __init__(self, name, resource, headers, area):
         """Initialize a web scrape sensor."""
-
         self._name = name
         self._area = area
         self._resource = resource
         self._headers = headers
         self._state = STATE_UNKNOWN
         self._unit_of_measurement = 'PM2.5'
-						   
-											 
-										
+
 
     @property
     def name(self):
@@ -113,7 +106,7 @@ class NeaSensorPM25(Entity):
             if forecasts[self._area] is not None:
                 value = int(forecasts[self._area])
             else:
-                value = 'No Data'
+                value = None
                 _LOGGER.error("Unable to fetch data from %s", value)
                 return False
         except (TimeoutError,KeyError):

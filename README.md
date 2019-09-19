@@ -12,7 +12,7 @@ configuration.yaml file
 
 ```
 sensor:
-  - platform: sgnea
+  - platform: sgpm25
     name: 'SG 1Hour PM2.5'
     area: 'YOURLOCATION'
 ```

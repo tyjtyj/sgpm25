@@ -30,13 +30,13 @@ west
 central
 ```
 
-Recomended additional automation
+Recomended additional automation. The data appears to update around the 9th minute hourly. 
 ```
 - alias: 'Hourly Update'
   initial_state: on
   trigger:
     - platform: time_pattern
-      minutes: 1
+      minutes: 10
   action:
     - service: homeassistant.update_entity
       entity_id: sensor.sensor.sg_1hour_pm2_5

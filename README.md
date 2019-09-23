@@ -39,5 +39,5 @@ Recomended additional automation. The data appears to update around the 9th minu
       minutes: 10
   action:
     - service: homeassistant.update_entity
-      entity_id: sensor.sensor.sg_1hour_pm2_5
+      entity_id: sensor.sg_1hour_pm2_5
 ```

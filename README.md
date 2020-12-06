@@ -1,6 +1,8 @@
 # SGNEA 1Hour PM2.5 home-assistant
 
 
+**this intergration is broken due to api changed/removed. I will come back next time haze hit again
+
 Home Assistant Custom Component to get PM2.5 from Singapore National Enviroment Agency (SG NEA)
 
 
